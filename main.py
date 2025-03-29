@@ -741,7 +741,11 @@ import calendar
 
 # Output: [current month, all months]
 def get_dailies_month_maps(dailiesDict: Dict[datetime, Question]) -> Tuple[str, str] :
-    earliest_date = min(dailiesDict.keys())
+    if not dailiesDict:
+        print("No daily submissions found. Skipping daily markdown generation.")
+        return {}  # Or handle it as needed (e.g., set a default value)
+    else:
+        earliest_date = min(dailiesDict.keys())
     
     outputs = []
     
